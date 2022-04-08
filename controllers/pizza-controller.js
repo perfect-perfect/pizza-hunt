@@ -41,6 +41,7 @@ const pizzaController = {
     // Mongoose finds a single document (row) we want to update and updates it
     // If we don't set that third parameter, '{ new: true }', it will return the original document
     //  - By setting the parameter to true, we're instructing Mongoose to return the new version of the document.
+    //  - the 'where' clause is used first, (_id: params.id) then the updated data, then options for how the data should be returned.
     updatePizza({ params, body }, res) {
         Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true })
             .then(dbPizzaData => {
